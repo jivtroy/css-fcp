@@ -1,0 +1,60 @@
+{
+  "name": "css-fcp",
+  "version": "0.1.0",
+  "description": "A lightweight utility to optimize First Contentful Paint (FCP) by managing and prioritizing critical CSS delivery for better Web Vitals.",
+  "type": "module",
+  "types": "./dist/types/main.d.ts",
+  "main": "./dist/css-fcp.cjs",
+  "module": "./dist/css-fcp.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/main.d.ts",
+      "import": "./dist/css-fcp.js",
+      "require": "./dist/css-fcp.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "css",
+    "fcp",
+    "first-contentful-paint",
+    "web-vitals",
+    "performance",
+    "optimization",
+    "critical-css",
+    "pagespeed",
+    "lighthouse",
+    "frontend",
+    "nodejs",
+    "node",
+    "javascript",
+    "js",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jivtroy/css-fcp.git"
+  },
+  "author": "Jiv Troy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jivtroy/css-fcp/issues"
+  },
+  "homepage": "https://github.com/jivtroy/css-fcp",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2",
+    "vite": "^8.0.8",
+    "vite-plugin-banner": "^0.8.1"
+  },
+  "dependencies": {
+    "critical": "^7.2.1",
+    "purgecss": "^8.0.0"
+  }
+}
