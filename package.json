@@ -54,7 +54,7 @@
     "vite-plugin-banner": "^0.8.1"
   },
   "dependencies": {
-    "critical": "^7.2.1",
+    "critical": "^9.0.0",
     "purgecss": "^8.0.0"
   }
 }

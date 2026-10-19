@@ -1,4 +1,4 @@
-import { generate } from 'critical'
+import { critical } from 'critical'
 
 export default async function (base, page, options = null) {
   if (!base) throw new Error('Base url not found.')
@@ -13,8 +13,7 @@ export default async function (base, page, options = null) {
     const settings = { html }
     if (options !== null) Object.assign(settings, options)
     if (page?.options) Object.assign(settings, page.options)
-
-    await generate(settings)
+    return await critical(settings)
   } catch (e) {
     console.error('Error:', e.message)
   }
