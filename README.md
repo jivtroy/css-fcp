@@ -46,49 +46,64 @@ export default [
   },
   {
     name: 'post',
-    url: '/blog/post-name/'
+    url: '/blog/post-name/',
+    options: {
+      css: ['/path/to/custom.css']
+    }
   }
 ]
 ```
 
 ### Remove unused CSS
 
+Under the hood, we use the **purgecss** package, so you can pass the same set of options via the third argument. Page-specific options override general ones.
+
 ```js
+import { writeFile } from 'node:fs/promises'
 import { removeUnused } from 'css-fcp'
 import pages from './pages.config.js'
 
 const siteUrl = 'https://example.com'
 const cssPath = './assets/css/'
 for (const page of pages) {
-  removeUnused(siteUrl, page, {
+  const result = await removeUnused(siteUrl, page, {
     css: [
-      `${cssPath}${page.name}.css`
-    ],
-    output: `${cssPath}${page.name}.css`
+      `${cssPath}style1.css`,
+      `${cssPath}style2.css`,
+      `${cssPath}style3.css`
+    ]
   })
+  if (result?.length) {
+    const css = result.map(item => item.css).join('')
+    await writeFile(`${cssPath}${page.name}.css`, css, { flag: 'w' })
+  }
   console.log('Done:', page.name)
 }
 ```
 
 ### Extract critical CSS
 
+Under the hood, we use the **critical** package, so you can pass the same set of options via the third argument. Page-specific options override general ones.
+
 ```js
+import { writeFile } from 'node:fs/promises'
 import { extractCritical } from 'css-fcp'
 import pages from './pages.config.js'
 
 const siteUrl = 'https://example.com'
 const cssPath = './assets/css/'
 for (const page of pages) {
-  extractCritical(siteUrl, page, {
-    css: `${cssPath}${page.name}.css`,
-    target: {
-      css: `${cssPath}critical/${page.name}.css`,
-      uncritical: `${cssPath}uncritical/${page.name}.css`
-    },
+  const { css } = await extractCritical(siteUrl, page, {
+    css: [
+      `${cssPath}style1.css`,
+      `${cssPath}style2.css`,
+      `${cssPath}style3.css`
+    ],
+    engine: 'static',
     width: 2000,
-    height: 1080,
-    rebase: asset => `${siteUrl}/assets${asset.absolutePath}`
+    height: 1080
   })
+  await writeFile(`${cssPath}critical/${page.name}.css`, css, { flag: 'w' })
   console.log('Done:', page.name)
 }
 ```

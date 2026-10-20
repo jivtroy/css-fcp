@@ -1,1 +1,1 @@
-export default function _default(base: any, page: any, options?: null): Promise<import("purgecss").ResultPurge[] | undefined>;
+export default function _default(base: any, page: any, options?: null): Promise<import("purgecss").ResultPurge[]>;

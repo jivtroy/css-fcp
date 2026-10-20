@@ -10,37 +10,29 @@ import { PurgeCSS } from "purgecss";
 async function extractCritical_default(base, page, options = null) {
 	if (!base) throw new Error("Base url not found.");
 	if (!page?.url) throw new Error("Page url not found.");
-	try {
-		const url = new URL(page.url, base);
-		const res = await fetch(url);
-		if (!res.ok) throw new Error(`Error fetching page: ${url}`);
-		const settings = { html: await res.text() };
-		if (options !== null) Object.assign(settings, options);
-		if (page?.options) Object.assign(settings, page.options);
-		return await critical(settings);
-	} catch (e) {
-		console.error("Error:", e.message);
-	}
+	const url = new URL(page.url, base);
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`Error fetching page: ${url}`);
+	const settings = { html: await res.text() };
+	if (options !== null) Object.assign(settings, options);
+	if (page?.options) Object.assign(settings, page.options);
+	return await critical(settings);
 }
 //#endregion
 //#region src/removeUnused.js
 async function removeUnused_default(base, page, options = null) {
 	if (!base) throw new Error("Base url not found.");
 	if (!page?.url) throw new Error("Page url not found.");
-	try {
-		const url = new URL(page.url, base);
-		const res = await fetch(url);
-		if (!res.ok) throw new Error(`Error fetching page: ${url}`);
-		const settings = { content: [{
-			raw: await res.text(),
-			extension: "html"
-		}] };
-		if (options !== null) Object.assign(settings, options);
-		if (page?.options) Object.assign(settings, page.options);
-		return await new PurgeCSS().purge(settings);
-	} catch (e) {
-		console.error("Error:", e.message);
-	}
+	const url = new URL(page.url, base);
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`Error fetching page: ${url}`);
+	const settings = { content: [{
+		raw: await res.text(),
+		extension: "html"
+	}] };
+	if (options !== null) Object.assign(settings, options);
+	if (page?.options) Object.assign(settings, page.options);
+	return await new PurgeCSS().purge(settings);
 }
 //#endregion
 export { extractCritical_default as extractCritical, removeUnused_default as removeUnused };
