@@ -1,6 +1,6 @@
 {
   "name": "css-fcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight utility to optimize First Contentful Paint (FCP) by managing and prioritizing critical CSS delivery for better Web Vitals.",
   "type": "module",
   "types": "./dist/types/main.d.ts",

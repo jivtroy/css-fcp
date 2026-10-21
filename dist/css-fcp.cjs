@@ -1,5 +1,5 @@
 /*! 
- * CSS FCP v0.1.0
+ * CSS FCP v0.1.1
  * Homepage (https://github.com/jivtroy/css-fcp)
  * Copyright 2026 Jiv Troy
  * License: MIT
