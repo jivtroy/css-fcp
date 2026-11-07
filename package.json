@@ -43,6 +43,12 @@
     "url": "https://github.com/jivtroy/css-fcp/issues"
   },
   "homepage": "https://github.com/jivtroy/css-fcp",
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://patreon.com"
+    }
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
