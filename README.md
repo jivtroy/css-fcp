@@ -7,12 +7,6 @@ A lightweight utility to optimize First Contentful Paint (FCP) by managing and p
 1. [Compatibility](#compatibility)
 2. [Installation](#installation)
    1. [NPM](#npm)
-   2. [Bun](#bun)
-   3. [Deno](#deno)
-   4. [PNPM](#pnpm)
-   5. [Yarn](#yarn)
-   6. [Nub](#nub)
-   7. [Vlt](#vlt)
 3. [Usage](#usage)
    1. [Remove unused CSS](#remove-unused-css)
    2. [Extract critical CSS](#extract-critical-css)
@@ -32,42 +26,6 @@ Node | >= 20
 
 ```bash
 npm install css-fcp
-```
-
-### Bun
-
-```bash
-bun add css-fcp
-```
-
-### Deno
-
-```bash
-deno add npm:css-fcp
-```
-
-### PNPM
-
-```bash
-pnpm add css-fcp
-```
-
-### Yarn
-
-```bash
-yarn add css-fcp
-```
-
-### Nub
-
-```bash
-nub install css-fcp
-```
-
-### Vlt
-
-```bash
-vlt install css-fcp
 ```
 
 ## Usage
